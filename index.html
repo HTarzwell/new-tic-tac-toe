@@ -14,6 +14,7 @@
       <div id="nav-bar" class="maindiv">
         <h1>TicTacToe</h1>
         <p>This is the nav bar div</p>
+        <a href="#changePwdModal" data-toggle="modal" data-target="#changePwdModal">Change Password</a>
       </div>
       <div id="header" class="maindiv">
         <p>This is the header div</p>
@@ -90,6 +91,38 @@
             </div>
             <div id="user-control" class="user-admin">
               <!--modals for changing password and signing out go here-->
+              <div class="modal fade" id="changePwdModal" tabindex="-1" role="dialog" aria-labelledby="changePwdModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="changePwdModalLabel">Change Password</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <div class="form-group">
+                          <label for="changePwdPasswordOld">Old Password</label>
+                          <input type="password" class="form-control" id="changePwdOld" placeholder="Old Password">
+                        </div>
+                        <div class="form-group">
+                          <label for="changePwdPasswordNew">New Password</label>
+                          <input type="password" class="form-control" id="changePwdNew" placeholder="New Password">
+                        </div>
+                        <div class="form-group">
+                          <label for="signInPassword1">Confirm New Password</label>
+                          <input type="password" class="form-control" id="changePwdConfirmNew" placeholder="Confirm New Password">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div id="game-space" class="game">
               <!--all game elements go here-->
