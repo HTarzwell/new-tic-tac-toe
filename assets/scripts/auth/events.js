@@ -3,10 +3,10 @@
 const api = require('./api')
 const getFormFields = require('../../../lib/get-form-fields')
 const ui = require('./ui')
-// const index = require('../index.js')
 
 const onSignUp = function (event) {
-  event.preventDefault() // prevents page from refreshing!!
+  console.log('onsignup firing at events.js')
+  event.preventDefault()
   const data = getFormFields(this)
   api.signUp(data)
     .then(ui.signUpSuccess)
@@ -14,7 +14,6 @@ const onSignUp = function (event) {
   $('#signUpEmail input[type="email"]').val('')
   $('#signUpPassword input[type="password"]').val('')
   $('#signUpPasswordConfirm input[type="password"]').val('')
-  console.log('onsignup firing at events.js')
 }
 
 const addHandlers = () => {
