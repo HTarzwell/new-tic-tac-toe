@@ -2,7 +2,7 @@
 
 const store = require('../store')
 
-const signUpSuccess = function (data) {
+/* const signUpSuccess = function (data) {
   $('#signUpAlert').text('Sign-Up Successful!')
   $('#signUpAlert').css('background-color', 'green')
   $('#signUpAlert').css('color', 'white')
@@ -19,4 +19,4 @@ const signUpFailure = function (error) {
 module.exports = {
   signUpSuccess,
   signUpFailure
-}
+} */

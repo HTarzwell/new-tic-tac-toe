@@ -3,7 +3,8 @@
 const config = require('../config')
 const store = require('../store')
 
-const signUp = function (data) {
+/* const signUp = function (data) {
+  console.log("sign in firing at api.js")
   return $.ajax({
     url: config.apiOrigin + '/sign-up',
     method: 'POST',
@@ -12,9 +13,8 @@ const signUp = function (data) {
     },
     data
   })
-  console.log("sign in firing at api.js")
 }
 
 module.exports = {
   signUp
-}
+} */
