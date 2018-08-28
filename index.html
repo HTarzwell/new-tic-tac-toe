@@ -21,6 +21,10 @@
       </div>
       <div id="content" class="maindiv">
         <p>This is the content div</p>
+          <!--user feedback messages here-->
+          <div id="signUpAlert"></div>
+          <div id="signInAlert"></div>
+          <!--user feedback ends here -->
           <div id="user-verify" class="user-admin">
             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#signInModal">PLAY</button>
             <!--modals for sign up and sign in are here-->
@@ -54,6 +58,7 @@
                   </div>
                 </div>
               </div>
+              <!--working area api1-->
               <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
@@ -64,19 +69,21 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                      <form>
+                      <form id="signUpForm">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Email address</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                          <label for="signUpEmail">Email address</label>
+                          <input type="email" class="form-control" id="signUpEmail" aria-describedby="signUpEmailField" placeholder="Enter email">
+                          <small id="signUpEmailField" class="form-text text-muted">Please enter a valid email address</small>
                         </div>
                         <div class="form-group">
-                          <label for="exampleInputPassword1">Password</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                          <label for="signUpPassword">Password</label>
+                          <input type="password" class="form-control" id="signUpPassword" aria-describedby="signUpPasswordField" placeholder="Password">
+                          <small id="signUpPasswordField" class="form-text text-muted">Your password should be between 6-8 characters and include numbers and special characters</small>
                         </div>
                         <div class="form-group">
-                          <label for="exampleInputPassword1">Confirm Password</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                          <label for="signUpPasswordConfirm">Confirm Password</label>
+                          <input type="password" class="form-control" id="signUpPasswordConfirm" aria-describedby="signUpPasswordConfirmField" placeholder="Password">
+                          <small id="signUpPasswordConfirmField" class="form-text text-muted">Please retype your password to continue</small>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                         <button type="sign-up" class="btn btn-success" data-dismiss="modal" data-target="#signInModal" data-toggle="modal">Sign In</button>
@@ -88,6 +95,7 @@
                   </div>
                 </div>
               </div>
+              <!--working area api1!-->
             </div>
             <div id="user-control" class="user-admin">
               <!--modals for changing password and signing out go here-->
