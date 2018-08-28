@@ -8,7 +8,8 @@ $(() => {
   setAPIOrigin(location, config)
 })
 
-$('#mybutton').on('click', function () {
+$('#signUpForm').on('submit', function () {
+  event.preventDefault()
   console.log('the submit button works!')
 })
 
