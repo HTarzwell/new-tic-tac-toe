@@ -4,7 +4,6 @@ const api = require('./api')
 const getFormFields = require('../../../lib/get-form-fields')
 const ui = require('./ui')
 
-/*
 const onSignUp = function (event) {
   console.log('onsignup firing at events.js')
   event.preventDefault()
@@ -19,4 +18,8 @@ const onSignUp = function (event) {
 
 const addHandlers = () => {
   $('#signUpForm').on('submit', onSignUp)
-}*/
+}
+
+module.exports = {
+  addHandlers
+}
