@@ -25,20 +25,27 @@ const onSignIn = function (event) {
 }
 
 const onChangePassword = function (event) {
-  console.log('onChangePassword firing at events.js')
   event.preventDefault()
   const data = getFormFields(this)
-  console.log("DATA IS ", data)
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
   $('#change-password input[type="password"]').val('')
 }
 
+const onSignOut = function (event) {
+  console.log('onsignout is firing at events.js')
+  event.preventDefault()
+  api.signOut()
+    .then(ui.signOutSuccess)
+    .catch(ui.signOutFailure)
+}
+
 const addHandlers = () => {
   $('#signUpForm').on('submit', onSignUp),
   $('#signInForm').on('submit', onSignIn),
-  $('#changePasswordForm').on('submit', onChangePassword)
+  $('#changePasswordForm').on('submit', onChangePassword),
+  $('#signOutButton').on('submit', onSignOut)
 }
 
 module.exports = {

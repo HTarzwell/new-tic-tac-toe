@@ -26,8 +26,6 @@ const signIn = function (data) {
 }
 
 const changePassword = function (data) {
-  console.log("change pwd firing at api.js")
-  console.log("store user is ", store.user)
   return $.ajax({
     url: config.apiOrigin + '/change-password/',
     method: 'PATCH',
@@ -39,8 +37,21 @@ const changePassword = function (data) {
   })
 }
 
+const signOut = function () {
+  console.log('signout firing at api')
+  return $.ajax({
+    url: config.apiOrigin + '/sign-out/',
+    method: 'DELETE',
+    headers: {
+      contentType: 'application/json',
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
-  changePassword
+  changePassword,
+  signOut
 }
