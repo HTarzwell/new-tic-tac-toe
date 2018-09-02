@@ -20,8 +20,6 @@ const signInSuccess = function (data) {
   $('#signInAlert').css('color', 'white')
   $('#signInAlert').css('background-color', 'green')
   store.user = data.user
-  console.log("signUpSuccess firing at ui.js")
-  console.log('store.user is ', store.user)
 }
 
 const signInFailure = function (error) {
@@ -31,9 +29,25 @@ const signInFailure = function (error) {
   console.log(error)
 }
 
+const changePasswordSuccess = function () {
+  $('#signInAlert').text('Successfully Changed Password!')
+  $('#signInAlert').css('color', 'white')
+  $('#signInAlert').css('background-color', 'green')
+  console.log("changePasswordSuccess firing at ui.js")
+}
+
+const changePasswordFailure = function (error) {
+  $('#signInAlert').text('Password Change Unsuccessful')
+  $('#signInAlert').css('color', 'white')
+  $('#signInAlert').css('background-color', 'red')
+  console.log(error)
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
   signInSuccess,
-  signInFailure
+  signInFailure,
+  changePasswordSuccess,
+  changePasswordFailure
 }

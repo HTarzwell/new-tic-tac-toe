@@ -27,7 +27,6 @@
           <!--user feedback ends here -->
           <div id="user-verify" class="user-admin">
             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#signInModal">PLAY</button>
-              <!--working area api1-->
             <!--modals for sign up and sign in are here-->
               <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -59,7 +58,6 @@
                   </div>
                 </div>
               </div>
-              <!--working area api1!-->
               <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
@@ -109,18 +107,14 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                      <form>
+                      <form id="changePasswordForm">
                         <div class="form-group">
-                          <label for="changePwdPasswordOld">Old Password</label>
-                          <input type="password" class="form-control" id="changePwdOld" placeholder="Old Password">
+                          <label for="changePwdOld">Old Password</label>
+                          <input type="password" name="passwords[old]" class="form-control" id="changePwdOld" placeholder="Old Password">
                         </div>
                         <div class="form-group">
-                          <label for="changePwdPasswordNew">New Password</label>
-                          <input type="password" class="form-control" id="changePwdNew" placeholder="New Password">
-                        </div>
-                        <div class="form-group">
-                          <label for="signInPassword1">Confirm New Password</label>
-                          <input type="password" class="form-control" id="changePwdConfirmNew" placeholder="Confirm New Password">
+                          <label for="changePwdNew">New Password</label>
+                          <input type="password" name="passwords[new]" class="form-control" id="changePwdNew" placeholder="New Password">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                       </form>
