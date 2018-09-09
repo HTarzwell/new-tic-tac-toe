@@ -14,7 +14,8 @@
       <div id="nav-bar" class="maindiv">
         <h1>TicTacToe</h1>
         <p>This is the nav bar div</p>
-        <a href="#changePwdModal" data-toggle="modal" data-target="#changePwdModal">Change Password</a>
+        <button type="change-pwd" class="btn btn-warning" data-dismiss="modal" data-toggle="modal" data-target="#changePwdModal">Change Password</button>
+        <button type="sign-out" class="btn btn-danger" data-dismiss="modal" data-target="#signOutModal" data-toggle="modal">Sign Out</button>
       </div>
       <div id="header" class="maindiv">
         <p>This is the header div</p>
@@ -22,8 +23,7 @@
       <div id="content" class="maindiv">
         <p>This is the content div</p>
           <!--user feedback messages here-->
-          <div id="signUpAlert"></div>
-          <div id="signInAlert"></div>
+          <div id="alert"></div>
           <!--user feedback ends here -->
           <div id="user-verify" class="user-admin">
             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#signInModal">PLAY</button>
@@ -125,10 +125,26 @@
                   </div>
                 </div>
               </div>
-              <div>
-                <form id="#signOutButton">
-                  <button type="submit" class="btn btn-secondary">Sign Out</button>
-                </form>
+              <div class="modal fade" id="signOutModal" tabindex="-1" role="dialog" aria-labelledby="signOutModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="signOutModalLabel">Sign Out</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form id="signOutForm">
+                        <h4>Are you sure you want to sign out?</h4>
+                        <button type="submit" class="btn btn-danger">Sign Out</button>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div id="game-space" class="game">

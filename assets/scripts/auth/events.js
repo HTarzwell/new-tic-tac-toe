@@ -34,18 +34,18 @@ const onChangePassword = function (event) {
 }
 
 const onSignOut = function (event) {
-  console.log('onsignout is firing at events.js')
   event.preventDefault()
   api.signOut()
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
+  console.log('onsignout is firing at events.js')
 }
 
 const addHandlers = () => {
   $('#signUpForm').on('submit', onSignUp),
   $('#signInForm').on('submit', onSignIn),
   $('#changePasswordForm').on('submit', onChangePassword),
-  $('#signOutButton').on('submit', onSignOut)
+  $('#signOutControl').on('submit', onSignOut)
 }
 
 module.exports = {
