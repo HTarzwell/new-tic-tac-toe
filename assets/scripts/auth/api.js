@@ -40,7 +40,7 @@ const changePassword = function (data) {
 const signOut = function () {
   console.log('signout firing at api')
   return $.ajax({
-    url: config.apiOrigin + '/sign-out/' + store.user.id,
+    url: config.apiOrigin + '/sign-out/',
     method: 'DELETE',
     headers: {
       contentType: 'application/json',

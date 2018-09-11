@@ -8,7 +8,7 @@ $(() => {
   setAPIOrigin(location, config)
 })
 
-$('#signOutControl').on('submit', function() {
+$('#signOutForm').on('submit', function() {
   console.log('hey this button works')
 })
 

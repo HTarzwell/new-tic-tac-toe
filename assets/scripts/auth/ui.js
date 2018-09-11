@@ -44,16 +44,16 @@ const changePasswordFailure = function (error) {
 }
 
 const signOutSuccess = function () {
-  $('#signInAlert').text('Successfully Signed Out')
-  $('#signInAlert').css('color', 'white')
-  $('#signInAlert').css('background-color', 'green')
+  $('#alert').text('Successfully Signed Out')
+  $('#alert').css('color', 'white')
+  $('#alert').css('background-color', 'green')
   console.log('signout was successful')
 }
 
 const signOutFailure = function (error) {
-  $('#signInAlert').text('Sign Out Unsuccessful')
-  $('#signInAlert').css('color', 'white')
-  $('#signInAlert').css('background-color', 'red')
+  $('#alert').text('Sign Out Unsuccessful')
+  $('#alert').css('color', 'white')
+  $('#alert').css('background-color', 'red')
   console.log(error)
 }
 
