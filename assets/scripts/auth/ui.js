@@ -6,6 +6,7 @@ const signUpSuccess = function (data) {
   $('#alert').text('Sign-Up Successful!')
   $('#alert').css('background-color', 'green')
   $('#alert').css('color', 'white')
+  $(".modal.in").modal("hide")
 }
 
 const signUpFailure = function (error) {
@@ -20,6 +21,7 @@ const signInSuccess = function (data) {
   $('#alert').css('color', 'white')
   $('#alert').css('background-color', 'green')
   store.user = data.user
+  $(".modal.in").modal("hide")
 }
 
 const signInFailure = function (error) {
@@ -34,6 +36,7 @@ const changePasswordSuccess = function () {
   $('#alert').css('color', 'white')
   $('#alert').css('background-color', 'green')
   console.log("changePasswordSuccess firing at ui.js")
+  $(".modal.in").modal("hide")
 }
 
 const changePasswordFailure = function (error) {
@@ -48,6 +51,7 @@ const signOutSuccess = function () {
   $('#alert').css('color', 'white')
   $('#alert').css('background-color', 'green')
   console.log('signout was successful')
+  $(".modal.in").modal("hide")
 }
 
 const signOutFailure = function (error) {
