@@ -8,10 +8,6 @@ $(() => {
   setAPIOrigin(location, config)
 })
 
-$('#signOutForm').on('submit', function() {
-  console.log('hey this button works')
-})
-
 $(() => {
   authEvents.addHandlers()
 })
