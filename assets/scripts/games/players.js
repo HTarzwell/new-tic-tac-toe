@@ -1,6 +1,9 @@
 'use strict'
 
-const gamePlayer = {
+function gamePlayer () {
+  
+}
+/* const gamePlayer = {
   let token = '',
   let roundNumber = 0,
   function switchToken () {
@@ -19,7 +22,7 @@ function changeToken () {
     gamePlayer.roundNumber += 1
   })
   .then(gamePlayer.switchToken)
-}
+} */
 
 module.exports = {
   gamePlayer
