@@ -1,21 +1,25 @@
 'use strict'
 const player = require('./players')
 
-let board = new Array(9).fill('')
+// let board = new Array(9).fill('')
 
-function switchToken () {
+function selectSquare () {
+  
+}
+
+function playToken () {
     if (player.gamePlayer.roundNumber === 0 || player.gamePlayer.roundNumber % 2 !== 1) {
       player.gamePlayer.token = 'X'
     } else {
       player.gamePlayer.token = 'O'
     }
     player.gamePlayer.roundNumber += 1
-    console.log('round number is ', player.gamePlayer.roundNumber)
-    console.log('token is ', player.gamePlayer.token)
+    $(this).text(player.gamePlayer.token)
+    $(this).off()
 }
 
 const gameHandlers = () => {
-  $('.col button').on('click', switchToken)
+  $('.col button').on('click', playToken)
 }
 
 module.exports = {
