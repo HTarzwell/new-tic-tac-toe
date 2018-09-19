@@ -3,12 +3,19 @@ const player = require('./players')
 
 let board = new Array(9).fill('')
 
-const testFunction = function () {
-  console.log(board)
+function switchToken () {
+    if (player.gamePlayer.roundNumber === 0 || player.gamePlayer.roundNumber % 2 !== 1) {
+      player.gamePlayer.token = 'X'
+    } else {
+      player.gamePlayer.token = 'O'
+    }
+    player.gamePlayer.roundNumber += 1
+    console.log('round number is ', player.gamePlayer.roundNumber)
+    console.log('token is ', player.gamePlayer.token)
 }
 
 const gameHandlers = () => {
-  $('#btn-1').on('click', testFunction)
+  $('.col button').on('click', switchToken)
 }
 
 module.exports = {
