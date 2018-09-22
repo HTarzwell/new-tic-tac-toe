@@ -13,6 +13,13 @@ let board = {
  square9: ''
 }
 
+function winConditions () {
+  if (board.square1 !== '' && board.square1 === board.square2 && board.square2 === board.square3) {
+    player.winningToken = board.square1
+    console.log('the winning token is ', player.winningToken)
+  }
+}
+
 function switchToken () {
   if (player.gamePlayer.roundNumber === 0 || player.gamePlayer.roundNumber % 2 !== 1) {
     player.gamePlayer.token = 'X'
@@ -45,6 +52,7 @@ function playToken () {
     } else if ($(this).prop('id') === 'btn-9') {
       board.square9 = $(this).text()
     }
+    winConditions()
 }
 
 const gameHandlers = () => {

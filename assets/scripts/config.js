@@ -3,7 +3,7 @@
 const config = {
   apiOrigins: {
     development: 'https://tic-tac-toe-wdi.herokuapp.com/', // new development api deployed from GA
-    development: 'https://aqueous-atoll-85096.herokuapp.com'
+    production: 'https://aqueous-atoll-85096.herokuapp.com'
   }
 }
 

@@ -1,13 +1,10 @@
 'use strict'
-const board = require('./board')
+const gameBoard = require('./board')
 
 const gamePlayer = {
   roundNumber: 0,
-  token: ''
-}
-
-function winConditions () {
-  
+  token: '',
+  winningToken: ''
 }
 
 module.exports = {
