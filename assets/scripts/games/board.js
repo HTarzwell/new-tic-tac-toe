@@ -17,6 +17,27 @@ function winConditions () {
   if (board.square1 !== '' && board.square1 === board.square2 && board.square2 === board.square3) {
     player.winningToken = board.square1
     console.log('the winning token is ', player.winningToken)
+  } else if (board.square4 !== '' && board.square4 === board.square5 && board.square5 === board.square6) {
+    player.winningToken = board.square4
+    console.log('the winning token is ', player.winningToken)
+  } else if (board.square7 !== '' && board.square7 === board.square8 && board.square8 === board.square9) {
+    player.winningToken = board.square7
+    console.log('the winning token is ', player.winningToken)
+  } else if (board.square1 !== '' && board.square1 === board.square4 && board.square4 === board.square7) {
+    player.winningToken = board.square1
+    console.log('the winning token is ', player.winningToken)
+  } else if (board.square2 !== '' && board.square2 === board.square5 && board.square5 === board.square8) {
+    player.winningToken = board.square2
+    console.log('the winning token is ', player.winningToken)
+  } else if (board.square3 !== '' && board.square3 === board.square6 && board.square6 === board.square9) {
+    player.winningToken = board.square3
+    console.log('the winning token is ', player.winningToken)
+  } else if (board.square1 !== '' && board.square1 === board.square5 && board.square5 === board.square9) {
+    player.winningToken = board.square1
+    console.log('the winning token is ', player.winningToken)
+  } else if (board.square3 !== '' && board.square3 === board.square5 && board.square5 === board.square7) {
+    player.winningToken = board.square3
+    console.log('the winning token is ', player.winningToken)
   }
 }
 
