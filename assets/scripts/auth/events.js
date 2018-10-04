@@ -38,7 +38,6 @@ const onSignOut = function (event) {
   api.signOut()
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
-  console.log('onsignout is firing at events.js')
 }
 
 const addHandlers = () => {
