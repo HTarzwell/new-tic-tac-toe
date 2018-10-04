@@ -5,7 +5,8 @@ const gamePlayer = {
   roundNumber: 0,
   token: '',
   winningToken: '',
-  gameHasBeenWon: false
+  gameHasBeenWon: false,
+  gameIsADraw: false
 }
 
 function switchToken () {
