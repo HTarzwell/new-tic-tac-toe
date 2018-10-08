@@ -1,17 +1,6 @@
 'use strict'
 const player = require('./players')
-
-let board = {
- square1: '',
- square2: '',
- square3: '',
- square4: '',
- square5: '',
- square6: '',
- square7: '',
- square8: '',
- square9: ''
-}
+const store = require('../store')
 
 let finalBoard = Array(9).fill('')
 
@@ -20,70 +9,47 @@ function playToken () {
     player.gamePlayer.roundNumber += 1
     $(this).text(player.gamePlayer.token)
     $(this).off()
-    if ($(this).prop('id') === 'btn-1') {
-      board.square1 = $(this).text()
-      finalBoard[0] = board.square1
-    } else if ($(this).prop('id') === 'btn-2') {
-      board.square2 = $(this).text()
-      finalBoard[1] = board.square2
-    } else if ($(this).prop('id') === 'btn-3') {
-      board.square3 = $(this).text()
-      finalBoard[2] = board.square3
-    } else if ($(this).prop('id') === 'btn-4') {
-      board.square4 = $(this).text()
-      finalBoard[3] = board.square4
-    } else if ($(this).prop('id') === 'btn-5') {
-      board.square5 = $(this).text()
-      finalBoard[4] = board.square5
-    } else if ($(this).prop('id') === 'btn-6') {
-      board.square6 = $(this).text()
-      finalBoard[5] = board.square6
-    } else if ($(this).prop('id') === 'btn-7') {
-      board.square7 = $(this).text()
-      finalBoard[6] = board.square7
-    } else if ($(this).prop('id') === 'btn-8') {
-      board.square8 = $(this).text()
-      finalBoard[7] = board.square8
-    } else if ($(this).prop('id') === 'btn-9') {
-      board.square9 = $(this).text()
-      finalBoard[8] = board.square9
-    }
+    finalBoard[Number($(this).prop('id'))] = $(this).text()
+    /* UPDATE PATCH DATA
+    store.game.index = $(event.target).data('id')
+    store.game.value = $(this).text()
+    store.game.over = player.gamePlayer.gameOver*/
     drawCondition()
     winConditions()
     console.log('finalBoard is ', finalBoard)
 }
 
 function winConditions () {
-  if (board.square1 !== '' && board.square1 === board.square2 && board.square2 === board.square3) {
-    player.winningToken = board.square1
+  if (finalBoard[0] !== '' && finalBoard[0] === finalBoard[1] && finalBoard[1] === finalBoard[2]) {
+    player.winningToken = finalBoard[0]
     player.gameHasBeenWon = true
     closeBoard()
-  } else if (board.square4 !== '' && board.square4 === board.square5 && board.square5 === board.square6) {
-    player.winningToken = board.square4
+  } else if (finalBoard[3] !== '' && finalBoard[3] === finalBoard[4] && finalBoard[4] === finalBoard[5]) {
+    player.winningToken = finalBoard[3]
     player.gameHasBeenWon = true
     closeBoard()
-  } else if (board.square7 !== '' && board.square7 === board.square8 && board.square8 === board.square9) {
-    player.winningToken = board.square7
+  } else if (finalBoard[6] !== '' && finalBoard[6] === finalBoard[7] && finalBoard[7] === finalBoard[8]) {
+    player.winningToken = finalBoard[6]
     player.gameHasBeenWon = true
     closeBoard()
-  } else if (board.square1 !== '' && board.square1 === board.square4 && board.square4 === board.square7) {
-    player.winningToken = board.square1
+  } else if (finalBoard[0] !== '' && finalBoard[0] === finalBoard[3] && finalBoard[3] === finalBoard[6]) {
+    player.winningToken = finalBoard[0]
     player.gameHasBeenWon = true
     closeBoard()
-  } else if (board.square2 !== '' && board.square2 === board.square5 && board.square5 === board.square8) {
-    player.winningToken = board.square2
+  } else if (finalBoard[1] !== '' && finalBoard[1] === finalBoard[4] && finalBoard[4] === finalBoard[7]) {
+    player.winningToken = finalBoard[1]
     player.gameHasBeenWon = true
     closeBoard()
-  } else if (board.square3 !== '' && board.square3 === board.square6 && board.square6 === board.square9) {
-    player.winningToken = board.square3
+  } else if (finalBoard[2] !== '' && finalBoard[2] === finalBoard[5] && finalBoard[5] === finalBoard[8]) {
+    player.winningToken = finalBoard[2]
     player.gameHasBeenWon = true
     closeBoard()
-  } else if (board.square1 !== '' && board.square1 === board.square5 && board.square5 === board.square9) {
-    player.winningToken = board.square1
+  } else if (finalBoard[0] !== '' && finalBoard[0] === finalBoard[4] && finalBoard[4] === finalBoard[8]) {
+    player.winningToken = finalBoard[0]
     player.gameHasBeenWon = true
     closeBoard()
-  } else if (board.square3 !== '' && board.square3 === board.square5 && board.square5 === board.square7) {
-    player.winningToken = board.square3
+  } else if (finalBoard[2] !== '' && finalBoard[2] === finalBoard[4] && finalBoard[4] === finalBoard[6]) {
+    player.winningToken = finalBoard[2]
     player.gameHasBeenWon = true
     closeBoard()
   }
@@ -95,7 +61,7 @@ function drawCondition () {
     $('#win-alert').css('color', 'white')
     $('#win-alert').css('background-color', 'green')
   } else {
-    player.gamePlayer.gameIsADraw = true
+    player.gamePlayer.gameOver = true
     closeBoard()
   }
 }
@@ -107,7 +73,8 @@ function closeBoard () {
     $('#win-alert').css('background-color', 'green')
     $('#game-space').hide()
     $('#game-space').off()
-  } else if (player.gamePlayer.gameIsADraw === true) {
+    player.gamePlayer.gameOver = true
+  } else if (player.gamePlayer.gameOver === true) {
     $('#win-alert').text('Draw game: NO WINNER')
     $('#win-alert').css('color', 'white')
     $('#win-alert').css('background-color', 'red')
