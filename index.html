@@ -11,12 +11,24 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
-      <div id="nav-bar" class="maindiv navbar navbar-light bg-light">
-        <h1>TicTacToe</h1>
-        <p>This is the nav bar div</p>
-        <button type="change-pwd" class="btn btn-warning" data-dismiss="modal" data-toggle="modal" data-target="#changePwdModal">Change Password</button>
-        <button type="sign-out" class="btn btn-danger" data-dismiss="modal" data-target="#signOutModal" data-toggle="modal">Sign Out</button>
-      </div>
+      <div class="fixed-top">
+      <nav id="nav-bar" class="maindiv navbar navbar-light bg-light">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <form class="form-inline">
+            <a class="navbar-brand" href="#">TicTacToe</a>
+              <div id="userButtons" class="btn-group collapse">
+                <button type="change-pwd" class="btn btn-outline-warning" data-dismiss="modal" data-toggle="modal" data-target="#changePwdModal">Change Password</button>
+                <button type="sign-out" class="btn btn-outline-danger" data-dismiss="modal" data-target="#signOutModal" data-toggle="modal">Sign Out</button>
+              </div>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#userButtons" aria-controls="userButtons" aria-expanded="false" aria-label="Toggle user buttons">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </div>
       <div id="header" class="maindiv">
         <p>This is the header div</p>
         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#signInModal">Sign In</button>
@@ -188,8 +200,8 @@
               </div>
             </div>
         </div>
-      <div id="footer" class="maindiv">
-        <p>This is the footer div</p>
+      <div id="footer" class="maindiv fixed-bottom bg-light">
+        <p>&copy; 2018, Leni Tarzwell</p>
       </div>
     </body>
 </html>
