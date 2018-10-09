@@ -8,15 +8,13 @@ function playToken () {
     player.switchToken()
     player.gamePlayer.roundNumber += 1
     $(this).text(player.gamePlayer.token)
-    $(this).off()
+    $(this).off('click')
     finalBoard[Number($(this).prop('id'))] = $(this).text()
-    /* UPDATE PATCH DATA
-    store.game.index = $(event.target).data('id')
-    store.game.value = $(this).text()
-    store.game.over = player.gamePlayer.gameOver*/
+    player.gamePlayer.squareValue = Number($(this).prop('id'))
     drawCondition()
     winConditions()
     console.log('finalBoard is ', finalBoard)
+    console.log('squareValue is now ', player.gamePlayer.squareValue)
 }
 
 function winConditions () {
@@ -72,14 +70,12 @@ function closeBoard () {
     $('#win-alert').css('color', 'white')
     $('#win-alert').css('background-color', 'green')
     $('#game-space').hide()
-    $('#game-space').off()
     player.gamePlayer.gameOver = true
   } else if (player.gamePlayer.gameOver === true) {
     $('#win-alert').text('Draw game: NO WINNER')
     $('#win-alert').css('color', 'white')
     $('#win-alert').css('background-color', 'red')
     $('#game-space').hide()
-    $('#game-space').off()
   }
 }
 

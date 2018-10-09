@@ -2,6 +2,8 @@
 
 const config = require('../config')
 const store = require('../store')
+const board = require('./board')
+const players = require('./players')
 
 const createGame = function (data) {
   return $.ajax({
@@ -15,7 +17,7 @@ const createGame = function (data) {
   })
 }
 
-const changePassword = function (data) {
+const updateGame = function (event) {
   return $.ajax({
     url: config.apiOrigin + '/games/' + store.game.id,
     method: 'PATCH',
@@ -23,10 +25,18 @@ const changePassword = function (data) {
       contentType: 'application/json',
       Authorization: 'Token token=' + store.user.token
     },
-    data
+    data: {'game':
+      {'cell':
+        {'index': players.gamePlayer.squareValue,
+        'value': players.gamePlayer.token
+        },
+      'over': players.gamePlayer.gameOver
+      }
+    }
   })
 }
 
 module.exports = {
-  createGame
+  createGame,
+  updateGame
 }

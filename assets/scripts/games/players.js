@@ -6,7 +6,8 @@ const gamePlayer = {
   token: '',
   winningToken: '',
   gameHasBeenWon: false,
-  gameOver: false
+  gameOver: false,
+  squareValue: null
 }
 
 function switchToken () {
