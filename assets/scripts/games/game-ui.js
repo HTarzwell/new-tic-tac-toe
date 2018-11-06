@@ -14,7 +14,7 @@ const createGameFailure = function (error) {
 }
 
 const updateGameSuccess = function (data) {
-  console.log('updateGame success here!')
+  console.log('updateGame success!')
 }
 
 const updateGameFailure = function (error) {

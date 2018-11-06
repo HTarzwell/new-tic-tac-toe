@@ -3,22 +3,23 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 body {
   height: 100vh;
-  border: 2px solid red;
   padding: 10em;
 }
 
 .maindiv {
-  border: 1px solid blue;
   width: 100%;
   padding: 10px;
   align-self: center;
 }
 
-.col {
-  border: 1px dotted black;
+.space {
+  border: 1px solid black;
+  width: 33%;
+  padding-bottom: 10%;
 }
 
 .col button {
   width: 100%;
-  height: 100%;
+  padding-bottom: 50%;
+  align-self: center;
 }
