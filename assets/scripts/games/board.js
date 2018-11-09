@@ -85,13 +85,12 @@ function closeBoard () {
     $('#win-alert').text(`GAME OVER: winner, PLAYER ${gameBoard.winner}!`)
     $('#win-alert').css('color', 'white')
     $('#win-alert').css('background-color', 'green')
-    $('#game-space').hide()
+    $('.square').attr('disabled', true)
     gameBoard.over = true
   } else {
     $('#win-alert').text('Draw game: NO WINNER')
     $('#win-alert').css('color', 'white')
     $('#win-alert').css('background-color', 'red')
-    $('#game-space').hide()
   }
 }
 
@@ -104,7 +103,6 @@ const onResetGame = function () {
   gameBoard.winner = ''
   $('.square').text('')
   $('.square').removeAttr('disabled')
-  $('#game-space').show()
   console.log('reset game board is now ', gameBoard.board)
 }
 
