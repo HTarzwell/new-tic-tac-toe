@@ -3,7 +3,6 @@
 const config = require('../config')
 const store = require('../store')
 const board = require('./board')
-const players = require('./players')
 
 const createGame = function (data) {
   return $.ajax({
@@ -27,10 +26,10 @@ const updateGame = function (event) {
     },
     data: {'game':
       {'cell':
-        {'index': players.gamePlayer.squareValue,
-        'value': players.gamePlayer.token
+        {'index': board.gameBoard.index,
+        'value': board.gameBoard.token
         },
-      'over': players.gamePlayer.gameOver
+      'over': board.gameBoard.over
       }
     }
   })

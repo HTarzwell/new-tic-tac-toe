@@ -1,75 +1,93 @@
 'use strict'
-const player = require('./players')
+// const player = require('./players')
 const store = require('../store')
 
-let finalBoard = Array(9).fill('')
+let gameBoard = {
+  board: Array(9).fill(''),
+  token: '',
+  round: 0,
+  index: '',
+  over: false,
+  won: false,
+  winner: ''
+}
+
+function switchToken () {
+  if (gameBoard.round === 0 || gameBoard.round % 2 !== 1) {
+    gameBoard.token = 'X'
+  } else {
+    gameBoard.token = 'O'
+  }
+}
 
 function playToken () {
-    player.switchToken()
-    player.gamePlayer.roundNumber += 1
-    $(this).text(player.gamePlayer.token)
-    $(this).attr('disabled', true)
-    finalBoard[Number($(this).prop('id'))] = $(this).text()
-    player.gamePlayer.squareValue = Number($(this).prop('id'))
-    drawCondition()
-    winConditions()
+  switchToken()
+  gameBoard.round += 1
+  $(this).text(gameBoard.token)
+  gameBoard.board[Number($(this).prop('id'))] = $(this).text()
+  gameBoard.index = Number($(this).prop('id'))
+  $(this).attr('disabled', true)
+  console.log('gameBoard is now ', gameBoard.board)
+  console.log('index is ', gameBoard.index)
+  winConditions()
+  drawCondition()
 }
 
 function winConditions () {
-  if (finalBoard[0] !== '' && finalBoard[0] === finalBoard[1] && finalBoard[1] === finalBoard[2]) {
-    player.gamePlayer.winningToken = finalBoard[0]
-    player.gamePlayer.gameHasBeenWon = true
+  if (gameBoard.board[0] !== '' && gameBoard.board[0] === gameBoard.board[1] && gameBoard.board[1] === gameBoard.board[2]) {
+    gameBoard.winner = gameBoard.board[0]
+    gameBoard.won = true
     closeBoard()
-  } else if (finalBoard[3] !== '' && finalBoard[3] === finalBoard[4] && finalBoard[4] === finalBoard[5]) {
-    player.gamePlayer.winningToken = finalBoard[3]
-    player.gamePlayer.gameHasBeenWon = true
+  } else if (gameBoard.board[3] !== '' && gameBoard.board[3] === gameBoard.board[4] && gameBoard.board[4] === gameBoard.board[5]) {
+    gameBoard.winner = gameBoard.board[3]
+    gameBoard.won = true
     closeBoard()
-  } else if (finalBoard[6] !== '' && finalBoard[6] === finalBoard[7] && finalBoard[7] === finalBoard[8]) {
-    player.gamePlayer.winningToken = finalBoard[6]
-    player.gamePlayer.gameHasBeenWon = true
+  } else if (gameBoard.board[6] !== '' && gameBoard.board[6] === gameBoard.board[7] && gameBoard.board[7] === gameBoard.board[8]) {
+    gameBoard.winner = gameBoard.board[6]
+    gameBoard.won = true
     closeBoard()
-  } else if (finalBoard[0] !== '' && finalBoard[0] === finalBoard[3] && finalBoard[3] === finalBoard[6]) {
-    player.gamePlayer.winningToken = finalBoard[0]
-    player.gamePlayer.gameHasBeenWon = true
+  } else if (gameBoard.board[0] !== '' && gameBoard.board[0] === gameBoard.board[3] && gameBoard.board[3] === gameBoard.board[6]) {
+    gameBoard.winner = gameBoard.board[0]
+    gameBoard.won = true
     closeBoard()
-  } else if (finalBoard[1] !== '' && finalBoard[1] === finalBoard[4] && finalBoard[4] === finalBoard[7]) {
-    player.gamePlayer.winningToken = finalBoard[1]
-    player.gamePlayer.gameHasBeenWon = true
+  } else if (gameBoard.board[1] !== '' && gameBoard.board[1] === gameBoard.board[4] && gameBoard.board[4] === gameBoard.board[7]) {
+    gameBoard.winner = gameBoard.board[1]
+    gameBoard.won = true
     closeBoard()
-  } else if (finalBoard[2] !== '' && finalBoard[2] === finalBoard[5] && finalBoard[5] === finalBoard[8]) {
-    player.gamePlayer.winningToken = finalBoard[2]
-    player.gamePlayer.gameHasBeenWon = true
+  } else if (gameBoard.board[2] !== '' && gameBoard.board[2] === gameBoard.board[5] && gameBoard.board[5] === gameBoard.board[8]) {
+    gameBoard.winner = gameBoard.board[2]
+    gameBoard.won = true
     closeBoard()
-  } else if (finalBoard[0] !== '' && finalBoard[0] === finalBoard[4] && finalBoard[4] === finalBoard[8]) {
-    player.gamePlayer.winningToken = finalBoard[0]
-    player.gamePlayer.gameHasBeenWon = true
+  } else if (gameBoard.board[0] !== '' && gameBoard.board[0] === gameBoard.board[4] && gameBoard.board[4] === gameBoard.board[8]) {
+    gameBoard.winner = gameBoard.board[0]
+    gameBoard.won = true
     closeBoard()
-  } else if (finalBoard[2] !== '' && finalBoard[2] === finalBoard[4] && finalBoard[4] === finalBoard[6]) {
-    player.gamePlayer.winningToken = finalBoard[2]
-    player.gamePlayer.gameHasBeenWon = true
+  } else if (gameBoard.board[2] !== '' && gameBoard.board[2] === gameBoard.board[4] && gameBoard.board[4] === gameBoard.board[6]) {
+    gameBoard.winner = gameBoard.board[2]
+    gameBoard.won = true
     closeBoard()
   }
 }
 
 function drawCondition () {
-  if (finalBoard.includes('') && player.gamePlayer.gameHasBeenWon !== true) {
+  if (gameBoard.board.includes('') && gameBoard.won !== true) {
     $('#win-alert').text('Continue playing')
     $('#win-alert').css('color', 'white')
     $('#win-alert').css('background-color', 'green')
   } else {
-    player.gamePlayer.gameOver = true
+    gameBoard.over = true
     closeBoard()
   }
 }
 
 function closeBoard () {
-  if (player.gamePlayer.gameHasBeenWon === true) {
-    $('#win-alert').text(`GAME OVER: winner, PLAYER ${player.gamePlayer.winningToken}!`)
+  if (gameBoard.won === true) {
+    $('#win-alert').text(`GAME OVER: winner, PLAYER ${gameBoard.winner}!`)
     $('#win-alert').css('color', 'white')
     $('#win-alert').css('background-color', 'green')
     $('#game-space').hide()
-    player.gamePlayer.gameOver = true
-  } else if (player.gamePlayer.gameOver === true) {
+    gameBoard.over = true
+  } else {
     $('#win-alert').text('Draw game: NO WINNER')
     $('#win-alert').css('color', 'white')
     $('#win-alert').css('background-color', 'red')
@@ -77,24 +95,25 @@ function closeBoard () {
   }
 }
 
-const onResetGame = function (event) {
-  finalBoard = Array(9).fill('')
-  player.gamePlayer.roundNumber = 0
-  player.gamePlayer.token = ''
-  player.gamePlayer.winningToken = '',
-  player.gamePlayer.gameHasBeenWon = false
-  player.gamePlayer.gameOver = false
-  player.gamePlayer.squareValue = null
+const onResetGame = function () {
+  gameBoard.board = Array(9).fill('')
+  gameBoard.token = ''
+  gameBoard.round = 0
+  gameBoard.over = false
+  gameBoard.won = false
+  gameBoard.winner = ''
   $('.square').text('')
   $('.square').removeAttr('disabled')
   $('#game-space').show()
+  console.log('reset game board is now ', gameBoard.board)
 }
 
 const gameHandlers = () => {
   $('.col button').on('click', playToken)
-  $('#resetButton').on('click', onResetGame)
+  $('#newGameButton').on('click', onResetGame)
 }
 
 module.exports = {
-  gameHandlers
+  gameHandlers,
+  gameBoard
 }

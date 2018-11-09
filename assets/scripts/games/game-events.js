@@ -21,7 +21,7 @@ const onUpdateGame = function (event) {
 }
 
 const gameEventHandlers = () => {
-  $('#playButton').on('click', onCreateGame)
+  $('#newGameButton').on('click', onCreateGame)
   $('.square').on('click', onUpdateGame)
 }
 
